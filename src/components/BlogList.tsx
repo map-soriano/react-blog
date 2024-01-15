@@ -19,6 +19,7 @@ type BlogListProps = {
 
 const BlogList = ({ blogs, authors }: BlogListProps) => {
   // FIXME: Object is possibly undefined
+  // FIXME: Unexpected Application Error: Cannot convert undefined or null to object
   return (
     <>
       {Object.values(blogs).map((blog) => (

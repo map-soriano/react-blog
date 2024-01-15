@@ -7,18 +7,28 @@ type BlogDictionary = {
   id: number;
 };
 
-type BlogListProps = {
-  blogs: Record<number, BlogDictionary>;
+type AuthorDictionary = {
+  id: number;
+  name: string;
 };
 
-const BlogList = ({ blogs }: BlogListProps) => {
+type BlogListProps = {
+  blogs: Record<number, BlogDictionary>;
+  authors: Record<number, AuthorDictionary>;
+};
+
+const BlogList = ({ blogs, authors }: BlogListProps) => {
+  // FIXME: Object is possibly undefined
   return (
     <>
       {Object.values(blogs).map((blog) => (
         <BlogCard
           title={blog.title}
           body={blog.body}
-          author={blog.userId}
+          author={
+            Object.values(authors).find((author) => author.id == blog.userId)
+              .name || "User Not Found"
+          }
           key={blog.id}
         />
       ))}

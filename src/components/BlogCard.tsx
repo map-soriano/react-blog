@@ -1,7 +1,7 @@
 type BlogCardProps = {
   title: string;
   body: string;
-  author: number;
+  author: string;
   key: number;
 };
 
@@ -11,7 +11,10 @@ const BlogCard = ({ title, author }: BlogCardProps) => {
       <div className="card mt-3">
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
-          <p className="card-subtitle">{author}</p>
+          <p className="card-subtitle">
+            <strong>By: </strong>
+            {author}
+          </p>
         </div>
       </div>
     </>

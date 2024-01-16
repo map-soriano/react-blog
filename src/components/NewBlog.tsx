@@ -1,17 +1,41 @@
 import { useState } from "react";
 import useFetch from "../hooks/useFetch";
 
+type Author = {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
+  phone: string;
+  website: string;
+  company: {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+  };
+};
+
 const NewBlog = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("default");
   const [body, setBody] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const {
-    data: authors,
-    isPending,
-    error,
-  } = useFetch("https://jsonplaceholder.typicode.com/users");
+  const { data, isPending, error } = useFetch(
+    "https://jsonplaceholder.typicode.com/users"
+  );
+
+  const authors: Author[] = data ? (data as Author[]) : [];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,7 +57,6 @@ const NewBlog = () => {
       });
   };
 
-  // FIXME: Fix any to receive an object
   return (
     <>
       <form className="mt-3" onSubmit={handleSubmit}>
@@ -68,7 +91,7 @@ const NewBlog = () => {
             {error && <option>Error occurred...</option>}
             {isPending && <option>Loading authors...</option>}
             {authors &&
-              Object.values(authors).map((author: any) => (
+              Object.values(authors).map((author: Author) => (
                 <option value={author.id} key={author.id}>
                   {author.name}
                 </option>

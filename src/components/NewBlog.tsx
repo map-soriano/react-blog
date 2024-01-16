@@ -25,6 +25,8 @@ const NewBlog = () => {
             <option value={"default"} disabled>
               -- Select Author --
             </option>
+            {error && <option>Error occurred...</option>}
+            {isPending && <option>Loading authors...</option>}
             {authors &&
               Object.values(authors).map((author: any) => (
                 <option key={author.id}>{author.name}</option>

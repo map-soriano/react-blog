@@ -22,17 +22,19 @@ const BlogList = ({ blogs, authors }: BlogListProps) => {
   // FIXME: Unexpected Application Error: Cannot convert undefined or null to object
   return (
     <>
-      {Object.values(blogs).map((blog) => (
-        <BlogCard
-          title={blog.title}
-          body={blog.body}
-          author={
-            Object.values(authors).find((author) => author.id == blog.userId)
-              .name || "User Not Found"
-          }
-          key={blog.id}
-        />
-      ))}
+      {blogs &&
+        authors &&
+        Object.values(blogs).map((blog) => (
+          <BlogCard
+            title={blog.title}
+            body={blog.body}
+            author={
+              Object.values(authors).find((author) => author.id == blog.userId)
+                .name || "User Not Found"
+            }
+            key={blog.id}
+          />
+        ))}
     </>
   );
 };

@@ -26,13 +26,14 @@ const BlogList = ({ blogs, authors }: BlogListProps) => {
         authors &&
         Object.values(blogs).map((blog) => (
           <BlogCard
+            key={blog.id}
+            id={blog.id}
             title={blog.title}
             body={blog.body}
             author={
               Object.values(authors).find((author) => author.id == blog.userId)
-                .name || "User Not Found"
+                .name
             }
-            key={blog.id}
           />
         ))}
     </>

@@ -1,14 +1,17 @@
+import { Link } from "react-router-dom";
+
 type BlogCardProps = {
   title: string;
   body: string;
   author: string;
-  key: number;
+  id: number;
 };
 
-const BlogCard = ({ title, author }: BlogCardProps) => {
+// TODO: Fix styling of Links
+const BlogCard = ({ title, author, id }: BlogCardProps) => {
   return (
     <>
-      <div className="card mt-3">
+      <Link to={`/blog/${id}`} className="card mt-3">
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
           <p className="card-subtitle">
@@ -16,7 +19,7 @@ const BlogCard = ({ title, author }: BlogCardProps) => {
             {author}
           </p>
         </div>
-      </div>
+      </Link>
     </>
   );
 };

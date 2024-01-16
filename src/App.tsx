@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import NewBlog from "./components/NewBlog";
+import BlogView from "./components/BlogView";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/new",
         element: <NewBlog />,
+      },
+      {
+        path: "/blog/:id",
+        element: <BlogView />,
       },
     ],
   },

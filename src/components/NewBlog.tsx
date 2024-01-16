@@ -5,6 +5,7 @@ const NewBlog = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("default");
   const [body, setBody] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     data: authors,
@@ -15,6 +16,8 @@ const NewBlog = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    setIsLoading(true);
+
     const newBlog = { title: title, body: body, userId: author };
 
     fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -23,7 +26,11 @@ const NewBlog = () => {
       body: JSON.stringify(newBlog),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log("Successfully posted:");
+        console.log(data);
+        setIsLoading(false);
+      });
   };
 
   // FIXME: Fix any to receive an object
@@ -84,7 +91,12 @@ const NewBlog = () => {
         </div>
 
         {/* SUBMIT */}
-        <button className="btn btn-primary">Post</button>
+        {!isLoading && <button className="btn btn-primary">Post</button>}
+        {isLoading && (
+          <button className="btn btn-info text-white" disabled>
+            Posting...
+          </button>
+        )}
       </form>
     </>
   );

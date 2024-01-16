@@ -3,7 +3,7 @@ import useFetch from "../hooks/useFetch";
 
 const NewBlog = () => {
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState(undefined);
+  const [author, setAuthor] = useState("default");
   const [body, setBody] = useState("");
 
   const {
@@ -26,6 +26,7 @@ const NewBlog = () => {
             id="title"
             type="text"
             className="form-control"
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
 
@@ -38,7 +39,7 @@ const NewBlog = () => {
             value={author}
             id="author"
             className="form-select"
-            defaultValue={"default"}
+            onChange={(e) => setAuthor(e.target.value)}
           >
             <option value={"default"} disabled>
               -- Select Author --
@@ -64,6 +65,7 @@ const NewBlog = () => {
             name="blog-body"
             id="blog-body"
             className="form-control"
+            onChange={(e) => setBody(e.target.value)}
           ></textarea>
         </div>
         <button className="btn btn-primary">Post</button>

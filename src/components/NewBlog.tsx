@@ -27,7 +27,7 @@ type Author = {
 
 const NewBlog = () => {
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("default");
+  const [author, setAuthor] = useState("");
   const [body, setBody] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -71,6 +71,7 @@ const NewBlog = () => {
             type="text"
             className="form-control"
             onChange={(e) => setTitle(e.target.value)}
+            required
           />
         </div>
 
@@ -84,8 +85,9 @@ const NewBlog = () => {
             id="author"
             className="form-select"
             onChange={(e) => setAuthor(e.target.value)}
+            required
           >
-            <option value={"default"} disabled>
+            <option value="" disabled>
               -- Select Author --
             </option>
             {error && <option>Error occurred...</option>}
@@ -110,6 +112,7 @@ const NewBlog = () => {
             id="blog-body"
             className="form-control"
             onChange={(e) => setBody(e.target.value)}
+            required
           ></textarea>
         </div>
 

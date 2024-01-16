@@ -6,7 +6,9 @@ const useFetch = (url: string) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(url)
+    const abortFetch = new AbortController();
+
+    fetch(url, { signal: abortFetch.signal })
       .then((res) => {
         if (!res.ok) {
           throw Error("Data not found");
@@ -19,9 +21,15 @@ const useFetch = (url: string) => {
         setError(null);
       })
       .catch((err) => {
-        setIsPending(false);
-        setError(err.message);
+        if (err.name === "AbortError") {
+          return;
+        } else {
+          setIsPending(false);
+          setError(err.message);
+        }
       });
+
+    return () => abortFetch.abort();
   }, [url]);
 
   return { data, isPending, error };

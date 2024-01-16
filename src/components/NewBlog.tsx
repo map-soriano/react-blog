@@ -21,8 +21,8 @@ const NewBlog = () => {
           <label htmlFor="author" className="form-label">
             Author
           </label>
-          <select id="author" className="form-select">
-            <option key="default" selected disabled>
+          <select id="author" className="form-select" defaultValue={"default"}>
+            <option value={"default"} disabled>
               -- Select Author --
             </option>
             {authors &&

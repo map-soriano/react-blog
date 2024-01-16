@@ -29,7 +29,9 @@ const NewBlog = () => {
             {isPending && <option>Loading authors...</option>}
             {authors &&
               Object.values(authors).map((author: any) => (
-                <option key={author.id}>{author.name}</option>
+                <option value={author.name} key={author.id}>
+                  {author.name}
+                </option>
               ))}
           </select>
         </div>

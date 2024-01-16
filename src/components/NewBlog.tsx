@@ -12,10 +12,24 @@ const NewBlog = () => {
     error,
   } = useFetch("https://jsonplaceholder.typicode.com/users");
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const newBlog = { title: title, body: body, userId: author };
+
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
+      body: JSON.stringify(newBlog),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
+
   // FIXME: Fix any to receive an object
   return (
     <>
-      <form className="mt-3">
+      <form className="mt-3" onSubmit={handleSubmit}>
         {/* TITLE */}
         <div className="mb-3">
           <label htmlFor="title" className="form-label">
@@ -48,7 +62,7 @@ const NewBlog = () => {
             {isPending && <option>Loading authors...</option>}
             {authors &&
               Object.values(authors).map((author: any) => (
-                <option value={author.name} key={author.id}>
+                <option value={author.id} key={author.id}>
                   {author.name}
                 </option>
               ))}
@@ -68,6 +82,8 @@ const NewBlog = () => {
             onChange={(e) => setBody(e.target.value)}
           ></textarea>
         </div>
+
+        {/* SUBMIT */}
         <button className="btn btn-primary">Post</button>
       </form>
     </>

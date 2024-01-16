@@ -7,18 +7,23 @@ import NewBlog from "./components/NewBlog";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/new",
-    element: <NewBlog />,
+    element: <NavBar />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/new",
+        element: <NewBlog />,
+      },
+    ],
   },
 ]);
 
 const App = () => {
   return (
     <>
-      <NavBar />
       <RouterProvider router={router} />
     </>
   );

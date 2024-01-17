@@ -16,14 +16,13 @@ const Home = () => {
     error: authorsError,
   } = useFetch(URL_USERS);
 
-  // FIXME: Type not assignable to authors props
   return (
     <>
       {blogsError && <h1>An error occured with fetching the blogs</h1>}
       {authorsError && <h1>An error occured with fetching the authors</h1>}
       {isBlogsPending && <h1>Loading Blogs...</h1>}
       {isAuthorsPending && <p>Loading Authors...</p>}
-      {blogs && <BlogList blogs={blogs} authors={authors} />}
+      {blogs && authors && <BlogList blogs={blogs} authors={authors} />}
     </>
   );
 };

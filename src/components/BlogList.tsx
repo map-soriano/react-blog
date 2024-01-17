@@ -1,20 +1,10 @@
 import BlogCard from "./BlogCard";
 
-type BlogDictionary = {
-  userId: number;
-  title: string;
-  body: string;
-  id: number;
-};
-
-type AuthorDictionary = {
-  id: number;
-  name: string;
-};
+import { Blog, Author } from "../types/types";
 
 type BlogListProps = {
-  blogs: Record<number, BlogDictionary>;
-  authors: Record<number, AuthorDictionary>;
+  blogs: Record<number, Blog>;
+  authors: Record<number, Author>;
 };
 
 const BlogList = ({ blogs, authors }: BlogListProps) => {

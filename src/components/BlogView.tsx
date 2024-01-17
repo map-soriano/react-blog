@@ -2,12 +2,14 @@ import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 
 import { URL_POSTS } from "../constants/constants";
+import { Blog } from "../types/types";
 
 // TODO: Style the view
-// FIXME: Property does not exist on type 'never'
 const BlogView = () => {
   const { id } = useParams();
-  const { data: blog, isPending, error } = useFetch(`${URL_POSTS}/${id}`);
+  const { data, isPending, error } = useFetch(`${URL_POSTS}/${id}`);
+
+  const blog: Blog | null = data ? (data as Blog) : null;
 
   return (
     <>

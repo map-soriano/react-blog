@@ -1,15 +1,13 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 
+import { URL_POSTS } from "../constants/constants";
+
 // TODO: Style the view
 // FIXME: Property does not exist on type 'never'
 const BlogView = () => {
   const { id } = useParams();
-  const {
-    data: blog,
-    isPending,
-    error,
-  } = useFetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  const { data: blog, isPending, error } = useFetch(`${URL_POSTS}/${id}`);
 
   return (
     <>

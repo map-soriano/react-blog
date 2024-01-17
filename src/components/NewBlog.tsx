@@ -1,6 +1,8 @@
 import { useState } from "react";
 import useFetch from "../hooks/useFetch";
 
+import { URL_USERS } from "../constants/constants";
+
 type Author = {
   id: number;
   name: string;
@@ -31,9 +33,7 @@ const NewBlog = () => {
   const [body, setBody] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const { data, isPending, error } = useFetch(
-    "https://jsonplaceholder.typicode.com/users"
-  );
+  const { data, isPending, error } = useFetch(URL_USERS);
 
   const authors: Author[] = data ? (data as Author[]) : [];
 

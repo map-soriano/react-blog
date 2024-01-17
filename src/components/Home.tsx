@@ -1,18 +1,20 @@
 import useFetch from "../hooks/useFetch";
 import BlogList from "./BlogList";
 
+import { URL_POSTS, URL_USERS } from "../constants/constants";
+
 const Home = () => {
   const {
     data: blogs,
     isPending: isBlogsPending,
     error: blogsError,
-  } = useFetch("https://jsonplaceholder.typicode.com/posts");
+  } = useFetch(URL_POSTS);
 
   const {
     data: authors,
     isPending: isAuthorsPending,
     error: authorsError,
-  } = useFetch("https://jsonplaceholder.typicode.com/users");
+  } = useFetch(URL_USERS);
 
   // FIXME: Type not assignable to authors props
   return (

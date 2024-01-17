@@ -3,8 +3,8 @@ import BlogCard from "./BlogCard";
 import { Blog, Author } from "../types/types";
 
 type BlogListProps = {
-  blogs: Record<number, Blog>;
-  authors: Record<number, Author>;
+  blogs: Blog[];
+  authors: Author[];
 };
 
 const BlogList = ({ blogs, authors }: BlogListProps) => {

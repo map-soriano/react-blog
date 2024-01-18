@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 
 import { URL_USERS } from "../constants/constants";
@@ -14,6 +15,8 @@ const NewBlog = () => {
 
   const authors: Author[] = data ? (data as Author[]) : [];
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -28,9 +31,8 @@ const NewBlog = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Successfully posted:");
-        console.log(data);
-        setIsLoading(false);
+        alert(`Successfully posted!\n${JSON.stringify(data)}`);
+        navigate("/");
       });
   };
 

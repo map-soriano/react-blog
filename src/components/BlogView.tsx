@@ -4,7 +4,6 @@ import useFetch from "../hooks/useFetch";
 import { URL_POSTS } from "../constants/constants";
 import { Blog } from "../types/types";
 
-// TODO: Style the view
 const BlogView = () => {
   const { id } = useParams();
   const { data, isPending, error } = useFetch(`${URL_POSTS}/${id}`);
@@ -13,15 +12,23 @@ const BlogView = () => {
 
   return (
     <>
-      {isPending && <h1>Loading...</h1>}
-      {error && <h1>{error}</h1>}
-      {blog && (
-        <div>
-          <h1>{blog.title}</h1>
-          <h6>{blog.userId}</h6>
-          <p>{blog.body}</p>
-        </div>
-      )}
+      <div className="m-5 p-5 card">
+        {isPending && <h1>Loading...</h1>}
+        {error && <h1>{error}</h1>}
+        {blog && (
+          <div className="d-flex align-items-center">
+            <div className="me-1 p-2 text-end">
+              <h1 className="fs-1">{blog.title}</h1>
+              <p>{blog.userId}</p>
+            </div>
+            <div className="ms-1 p-2">
+              <p className="fs-5">
+                <em>{blog.body}</em>
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 };

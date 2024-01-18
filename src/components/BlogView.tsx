@@ -19,27 +19,30 @@ const BlogView = () => {
   const author = fetchedUser ? (fetchedUser as Author).name : null;
 
   return (
-    <>
-      <div className="card bg-primary-subtle m-5 p-5">
-        {isPending && <h1>Loading...</h1>}
-        {error && <h1>{error}</h1>}
-        {blog && (
-          <div className="d-flex align-items-center">
-            <div className="me-1 p-2 text-end">
-              <h1 className="fs-1">{blog.title}</h1>
-              {userIsPending && <p>Loading...</p>}
-              {userError && <p>{userError}</p>}
-              {author && <p>{author}</p>}
-            </div>
-            <div className="ms-1 p-2">
-              <p className="fs-5">
-                <em>{blog.body}</em>
-              </p>
+    <div className="vh-100 d-flex align-items-center justify-content-center overflow-y-hidden">
+      <div className="container mt-5">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <div className="card bg-primary-subtle">
+              <div className="card-body">
+                {isPending && <h1>Loading...</h1>}
+                {error && <h1>{error}</h1>}
+                {blog && (
+                  <div>
+                    <h1 className="card-title fs-2">{blog.title}</h1>
+                    {(userError || userIsPending) && <p>Loading...</p>}
+                    {author && <p className="card-text">{author}</p>}
+                    <p className="card-text">
+                      <em>{blog.body}</em>
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

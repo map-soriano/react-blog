@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 
 import { URL_POSTS, URL_USERS } from "../constants/constants";
@@ -18,6 +18,17 @@ const BlogView = () => {
 
   const author = fetchedUser ? (fetchedUser as Author).name : null;
 
+  const navigate = useNavigate();
+
+  const handleDelete = () => {
+    fetch(`${URL_POSTS}/${id}`, {
+      method: "DELETE",
+    }).then(() => {
+      alert("Successfully deleted!");
+      navigate("/");
+    });
+  };
+
   return (
     <div className="vh-100 d-flex align-items-center justify-content-center overflow-y-hidden">
       <div className="container mt-5">
@@ -35,6 +46,12 @@ const BlogView = () => {
                     <p className="card-text">
                       <em>{blog.body}</em>
                     </p>
+                    <button
+                      className="btn btn-danger float-end"
+                      onClick={handleDelete}
+                    >
+                      Delete
+                    </button>
                   </div>
                 )}
               </div>

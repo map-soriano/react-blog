@@ -47,6 +47,9 @@ const BlogList = ({ blogs, authors }: BlogListProps) => {
         >
           Previous
         </button>
+        <button className="btn btn-light" disabled>
+          {currentPage}
+        </button>
         <button
           className="btn btn-primary"
           onClick={handleNextPage}

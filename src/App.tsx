@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import NewBlog from "./components/NewBlog";
 import BlogView from "./components/BlogView";
+import "./App.css";
 
 const router = createBrowserRouter([
   {

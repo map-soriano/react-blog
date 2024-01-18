@@ -20,7 +20,7 @@ const BlogView = () => {
 
   return (
     <>
-      <div className="m-5 p-5 card">
+      <div className="card bg-primary-subtle m-5 p-5">
         {isPending && <h1>Loading...</h1>}
         {error && <h1>{error}</h1>}
         {blog && (

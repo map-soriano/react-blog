@@ -36,71 +36,73 @@ const NewBlog = () => {
 
   return (
     <>
-      <form className="mt-3" onSubmit={handleSubmit}>
-        {/* TITLE */}
-        <div className="mb-3">
-          <label htmlFor="title" className="form-label">
-            Title
-          </label>
-          <input
-            value={title}
-            id="title"
-            type="text"
-            className="form-control"
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
+      <div className="container vh-100">
+        <form className="mt-3" onSubmit={handleSubmit}>
+          {/* TITLE */}
+          <div className="mb-3">
+            <label htmlFor="title" className="form-label">
+              Title
+            </label>
+            <input
+              value={title}
+              id="title"
+              type="text"
+              className="form-control"
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
 
-        {/* AUTHOR */}
-        <div className="mb-3">
-          <label htmlFor="author" className="form-label">
-            Author
-          </label>
-          <select
-            value={author}
-            id="author"
-            className="form-select"
-            onChange={(e) => setAuthor(e.target.value)}
-            required
-          >
-            <option value="" disabled>
-              -- Select Author --
-            </option>
-            {error && <option>Error occurred...</option>}
-            {isPending && <option>Loading authors...</option>}
-            {authors &&
-              Object.values(authors).map((author: Author) => (
-                <option value={author.id} key={author.id}>
-                  {author.name}
-                </option>
-              ))}
-          </select>
-        </div>
+          {/* AUTHOR */}
+          <div className="mb-3">
+            <label htmlFor="author" className="form-label">
+              Author
+            </label>
+            <select
+              value={author}
+              id="author"
+              className="form-select"
+              onChange={(e) => setAuthor(e.target.value)}
+              required
+            >
+              <option value="" disabled>
+                -- Select Author --
+              </option>
+              {error && <option>Error occurred...</option>}
+              {isPending && <option>Loading authors...</option>}
+              {authors &&
+                Object.values(authors).map((author: Author) => (
+                  <option value={author.id} key={author.id}>
+                    {author.name}
+                  </option>
+                ))}
+            </select>
+          </div>
 
-        {/* BODY */}
-        <div className="mb-3">
-          <label htmlFor="blog-body" className="form-label">
-            Blog Body
-          </label>
-          <textarea
-            value={body}
-            name="blog-body"
-            id="blog-body"
-            className="form-control"
-            onChange={(e) => setBody(e.target.value)}
-            required
-          ></textarea>
-        </div>
+          {/* BODY */}
+          <div className="mb-3">
+            <label htmlFor="blog-body" className="form-label">
+              Blog Body
+            </label>
+            <textarea
+              value={body}
+              name="blog-body"
+              id="blog-body"
+              className="form-control"
+              onChange={(e) => setBody(e.target.value)}
+              required
+            ></textarea>
+          </div>
 
-        {/* SUBMIT */}
-        {!isLoading && <button className="btn btn-primary">Post</button>}
-        {isLoading && (
-          <button className="btn btn-info text-white" disabled>
-            Posting...
-          </button>
-        )}
-      </form>
+          {/* SUBMIT */}
+          {!isLoading && <button className="btn btn-primary">Post</button>}
+          {isLoading && (
+            <button className="btn btn-info text-white" disabled>
+              Posting...
+            </button>
+          )}
+        </form>
+      </div>
     </>
   );
 };

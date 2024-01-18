@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <div className="container-fluid">
+    <div className="container-fluid p-5 bg-dark text-light">
       <App />
     </div>
   </React.StrictMode>

@@ -22,7 +22,9 @@ const Home = () => {
       {authorsError && <h1>An error occured with fetching the authors</h1>}
       {isBlogsPending && <h1>Loading Blogs...</h1>}
       {isAuthorsPending && <p>Loading Authors...</p>}
-      {blogs && authors && <BlogList blogs={blogs} authors={authors} />}
+      <div className="vh-100 d-flex flex-column justify-content-center">
+        {blogs && authors && <BlogList blogs={blogs} authors={authors} />}
+      </div>
     </>
   );
 };

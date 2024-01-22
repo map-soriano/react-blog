@@ -49,7 +49,8 @@ const NewBlog = () => {
               value={title}
               id="title"
               type="text"
-              className="form-control"
+              className="form-control bg-dark text-light fs-1 fw-bold p-3"
+              placeholder="Enter title..."
               onChange={(e) => setTitle(e.target.value)}
               required
             />
@@ -63,7 +64,7 @@ const NewBlog = () => {
             <select
               value={author}
               id="author"
-              className="form-select"
+              className="form-select bg-dark text-light fs-6 p-3"
               onChange={(e) => setAuthor(e.target.value)}
               required
             >
@@ -90,7 +91,8 @@ const NewBlog = () => {
               value={body}
               name="blog-body"
               id="blog-body"
-              className="form-control"
+              className="form-control bg-dark text-light fs-5 p-3"
+              placeholder="Tell your awesome story!"
               onChange={(e) => setBody(e.target.value)}
               required
             ></textarea>
